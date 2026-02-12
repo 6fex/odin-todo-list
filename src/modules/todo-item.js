@@ -8,20 +8,46 @@ class ToDoItem {
     };
 };
 
+const PRIORITY_ARRAY = ["Low", "Medium", "High"];
+
 function toDoForm() {
     const formEle = document.createElement("form");
-    createLabeledInput(formEle, "test");
+    createLabeledInput(formEle, "task", "Task");
+    createLabeledInput(formEle, "desc", "Description");
+    createLabeledInput(formEle, "d-date", "Due Date", "date");
+    createLabeledSelect(formEle, "prio", "Priority", PRIORITY_ARRAY);
+    createLabeledInput(formEle, "comp", "Completed");
 
     return formEle;
 };
 
-function createLabeledInput(form, label) {
+function createLabeledInput(form, id, label, type = "text") {
     const labelEle = document.createElement("label");
     labelEle.textContent = label;
+    labelEle.htmlFor = id;
     const inputEle = document.createElement("input");
+    inputEle.id = id;
+    inputEle.type = type;
 
     form.appendChild(labelEle);
     form.appendChild(inputEle);
+};
+
+function createLabeledSelect(form, id, label, options) {
+    const labelEle = document.createElement("label");
+    labelEle.textContent = label;
+    const selectEle = document.createElement("select");
+    selectEle.id = id;
+    options.forEach(option => {
+        const optionEle = document.createElement("option");
+        optionEle.textContent = option;
+        const optionLowerCase = option.toLowerCase();
+        optionEle.setAttribute("value", optionLowerCase);
+        selectEle.appendChild(optionEle);
+    });
+
+    form.appendChild(labelEle);
+    form.appendChild(selectEle);
 };
 
 export { ToDoItem, toDoForm };
