@@ -1,4 +1,4 @@
-class List {
+export default class List {
     #toDos = [];
     
     constructor(name) {
