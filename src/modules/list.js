@@ -8,4 +8,8 @@ export default class List {
     getToDos() {
         return this.#toDos;
     };
+
+    addToDo(obj) {
+        this.#toDos.push(obj);
+    };
 };
