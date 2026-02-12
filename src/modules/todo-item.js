@@ -17,6 +17,7 @@ function toDoForm() {
     createLabeledInput(formEle, "d-date", "Due Date", "date");
     createLabeledSelect(formEle, "prio", "Priority", PRIORITY_ARRAY);
     createLabeledInput(formEle, "comp", "Completed", "checkbox");
+    createButton(formEle, "Create", "button");
 
     return formEle;
 };
@@ -56,6 +57,13 @@ function createLabeledSelect(form, id, label, options) {
 
     form.appendChild(labelEle);
     form.appendChild(selectEle);
+};
+
+function createButton(form, text, type) {
+    const buttonEle = document.createElement("button");
+    buttonEle.type = type;
+    buttonEle.textContent = text;
+    form.appendChild(buttonEle);
 };
 
 export { ToDoItem, toDoForm };
