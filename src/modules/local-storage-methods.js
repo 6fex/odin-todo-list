@@ -6,5 +6,8 @@ export default {
     },
     createArray(key) {
         localStorage.setItem(key, JSON.stringify([]));
+    },
+    getArray(key) {
+        return JSON.parse(localStorage.getItem(key));
     }
 };
