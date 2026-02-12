@@ -9,5 +9,15 @@ export default {
     },
     getArray(key) {
         return JSON.parse(localStorage.getItem(key));
+    },
+    isUnique(key, item) {
+        const array = JSON.parse(localStorage.getItem(key));
+        let unique = true;
+        array.forEach(obj => {
+            if(obj.name === item) {
+                unique = false;
+            };
+        });
+        return unique;
     }
 };
