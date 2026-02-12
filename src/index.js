@@ -7,6 +7,10 @@ const listStorageKey = "listStorage";
 if (localStorage.length === 0) {
     localStorageMethods.createArray(listStorageKey);
 };
+if (localStorageMethods.getArray(listStorageKey).length === 0) {
+    const newList = new List("Today");
+    localStorageMethods.push(listStorageKey, newList);
+};
 
 const listsDiv = document.querySelector(".lists");
 const listAddButton = document.querySelector(".list-add");
