@@ -24,9 +24,13 @@ window.addEventListener("load", (event) => {
 
 listAddButton.addEventListener("click", (event) => {
     const name = prompt("Name of your new list");
-    const newList = new List(name);
-    localStorageMethods.push(listStorageKey, newList);
-    listsDiv.appendChild(createListDiv(newList.name));
+    if (localStorageMethods.isUnique(listStorageKey, name)) {
+        const newList = new List(name);
+        localStorageMethods.push(listStorageKey, newList);
+        listsDiv.appendChild(createListDiv(newList.name));
+    } else {
+        console.log("List with the same name already exists.");
+    };
 });
 
 console.log(JSON.parse(localStorage.getItem(listStorageKey)));
