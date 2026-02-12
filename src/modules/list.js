@@ -12,4 +12,12 @@ export default class List {
     addToDo(obj) {
         this.#toDos.push(obj);
     };
+
+    removeTodo(task) {
+        this.#toDos.forEach((obj, index) => {
+            if(obj.task === task) {
+                this.#toDos.splice(index, 1);
+            };
+        });
+    };
 };
