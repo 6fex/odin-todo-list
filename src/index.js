@@ -31,7 +31,9 @@ listAddButton.addEventListener("click", (event) => {
 });
 
 listsDiv.addEventListener("click", (event) => {
-    console.log(event.target);
+    const key = event.target.textContent;
+    const array = localStorageMethods.getArray(key);
+    console.log(array);
 });
 
 console.log(localStorage);
