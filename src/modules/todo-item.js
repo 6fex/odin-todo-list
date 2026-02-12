@@ -27,6 +27,7 @@ function createLabeledInput(form, id, label, type = "text") {
     labelEle.htmlFor = id;
     const inputEle = document.createElement("input");
     inputEle.id = id;
+    inputEle.name = id;
     inputEle.type = type;
 
     form.appendChild(labelEle);
