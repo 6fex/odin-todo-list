@@ -16,12 +16,19 @@ function toDoForm() {
     createLabeledInput(formEle, "desc", "Description");
     createLabeledInput(formEle, "d-date", "Due Date", "date");
     createLabeledSelect(formEle, "prio", "Priority", PRIORITY_ARRAY);
-    createLabeledInput(formEle, "comp", "Completed");
+    createLabeledInput(formEle, "comp", "Completed", "checkbox");
 
     return formEle;
 };
 
 function createLabeledInput(form, id, label, type = "text") {
+    if (type === "checkbox") {
+        const labelEle = document.createElement("label");
+        labelEle.innerHTML = `${label}<input id="${id}" type="checkbox" name="${id}">`;
+        form.appendChild(labelEle);
+        return;
+    };
+    
     const labelEle = document.createElement("label");
     labelEle.textContent = label;
     labelEle.htmlFor = id;
