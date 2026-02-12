@@ -1,7 +1,11 @@
 class List {
-    toDos = [];
+    #toDos = [];
     
     constructor(name) {
         this.name = name;
+    };
+
+    getToDos() {
+        return this.#toDos;
     };
 };
