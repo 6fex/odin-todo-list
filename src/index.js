@@ -4,22 +4,29 @@ import ToDoItem from "./modules/todo-item.js";
 import localStorageMethods from "./modules/local-storage-methods.js";
 
 const listStorageKey = "listStorage";
-localStorageMethods.createArray(listStorageKey);
-
-const testList = new List("Today");
-localStorageMethods.push(listStorageKey, testList);
-console.log(testList);
-
-const testItem = new ToDoItem("mow lawn", "before 5 o'clock", "12-02-2026", "medium", false);
-console.log(testItem);
-
-testList.addToDo(testItem);
-console.log(testList.getToDos());
-
-testList.removeTodo("mow lawn");
-console.log(testList.getToDos());
+if (localStorage.length === 0) {
+    localStorageMethods.createArray(listStorageKey);
+};
 
 const listsDiv = document.querySelector(".lists");
-listsDiv.appendChild(createListDiv("Today"));
+const listAddButton = document.querySelector(".list-add");
+
+window.addEventListener("load", (event) => {
+    const listsArray = localStorageMethods.getArray(listStorageKey);
+
+    const childrenArray = Array.from(listsDiv.children);
+    childrenArray.forEach(child => child.remove());
+
+    listsArray.forEach(list => {
+        listsDiv.appendChild(createListDiv(list.name));
+    });
+});
+
+listAddButton.addEventListener("click", (event) => {
+    const name = prompt("Name of your new list");
+    const newList = new List(name);
+    localStorageMethods.push(listStorageKey, newList);
+    listsDiv.appendChild(createListDiv(newList.name));
+});
 
 console.log(JSON.parse(localStorage.getItem(listStorageKey)));
