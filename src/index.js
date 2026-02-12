@@ -9,6 +9,8 @@ if (localStorage.length === 0) {
 
 const listsDiv = document.querySelector(".lists");
 const listAddButton = document.querySelector(".list-add");
+const todosDiv = document.querySelector(".todos");
+const todoAddButton = document.querySelector(".todo-add");
 
 window.addEventListener("load", (event) => {
     const childrenArray = Array.from(listsDiv.children);
@@ -34,6 +36,10 @@ listsDiv.addEventListener("click", (event) => {
     const key = event.target.textContent;
     const array = localStorageMethods.getArray(key);
     console.log(array);
+});
+
+todoAddButton.addEventListener("click", (event) => {
+    
 });
 
 console.log(localStorage);
