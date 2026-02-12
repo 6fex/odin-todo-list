@@ -1,6 +1,6 @@
 import "./styles.css";
 import { createListDiv } from "./modules/list.js";
-import ToDoItem from "./modules/todo-item.js";
+import { ToDoItem, toDoForm } from "./modules/todo-item.js";
 import localStorageMethods from "./modules/local-storage-methods.js";
 
 if (localStorage.length === 0) {
@@ -39,7 +39,9 @@ listsDiv.addEventListener("click", (event) => {
 });
 
 todoAddButton.addEventListener("click", (event) => {
-    
+
 });
 
 console.log(localStorage);
+
+document.body.appendChild(toDoForm());
