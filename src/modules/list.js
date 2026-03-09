@@ -5,4 +5,18 @@ function createListDiv(name) {
     return listDiv;
 };
 
-export { createListDiv };
+function activeList() {
+    let list = "Today";
+
+    function get() {
+        return list;
+    };
+
+    function set(newList = "Today") {
+        list = newList;
+    };
+
+    return { get, set }
+};
+
+export { createListDiv, activeList };
