@@ -1,5 +1,5 @@
 import "./styles.css";
-import { createListDiv } from "./modules/list.js";
+import { createListDiv, activeList } from "./modules/list.js";
 import { ToDoItem, toDoForm } from "./modules/todo-item.js";
 import localStorageMethods from "./modules/local-storage-methods.js";
 
@@ -34,6 +34,7 @@ listAddButton.addEventListener("click", (event) => {
 
 listsDiv.addEventListener("click", (event) => {
     const key = event.target.textContent;
+    activeList.set(key);
     const array = localStorageMethods.getArray(key);
     console.log(array);
 });
