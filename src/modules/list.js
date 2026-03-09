@@ -5,7 +5,7 @@ function createListDiv(name) {
     return listDiv;
 };
 
-function activeList() {
+const activeList = (function() {
     let list = "Today";
 
     function get() {
@@ -17,6 +17,6 @@ function activeList() {
     };
 
     return { get, set }
-};
+})();
 
 export { createListDiv, activeList };
